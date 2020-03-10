@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">
+        <div class="float-left">
+            <h3>Lista de Autores</h3>
+        </div>
+        <div class="text-right">
+          <button type="button" class="btn btn-primary" routerLink="create"><i class="glyphicon glyphicon-plus"></i> Novo</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let autor of autores">
+                  <td>{{ autor.id }}</td>
+                  <td>{{ autor.nome }}</td>
+                  <td class="text-right">
+                      <button class="btn btn-outline-warning btn-sm" (click)="onEdit(livro.id)">Alterar</button>
+                      <button class="btn btn-outline-danger btn-sm" style="margin-left: 10px;" (click)="onDelete(livro.id)">Excluir</button>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

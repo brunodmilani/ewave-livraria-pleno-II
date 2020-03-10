@@ -1,0 +1,28 @@
+<form [formGroup]="form">
+  <h3><b>Cadastro de Reserva</b></h3>
+  <hr />
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="Usuario">Usuário</label>
+      <select class="form-control" formControlName="usuarioId">
+        <option value="null">Selecione</option>
+        <option *ngFor="let usuario of usuarios" value="{{usuario.id}}">{{usuario.nome}}</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="submitted && hasError('usuarioId') && hasError('usuarioId')['required']">
+        Usuário é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Livro">Livro</label>
+      <select class="form-control" formControlName="livroId">
+        <option value="null">Selecione</option>
+        <option *ngFor="let livro of livros" value="{{livro.id}}">{{livro.titulo}}</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="submitted && hasError('livroId') && hasError('livroId')['required']">
+        Livro é obrigatório.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
+    <button type="button" class="btn btn-secondary" routerLink="/reservas">Voltar</button>
+  </div>
+</form>

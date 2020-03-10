@@ -1,0 +1,52 @@
+<form [formGroup]="form">
+  <h3><b>Cadastro de Livro</b></h3>
+  <hr />
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input type="text" class="form-control" placeholder="Título" formControlName="titulo">
+      <div class="alert alert-danger" *ngIf="submitted && hasError('titulo') && hasError('titulo')['required']">
+        Título é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Autor">Autor</label>
+      <select class="form-control" formControlName="autorId">
+        <option value="null">Selecione</option>
+        <option *ngFor="let autor of autores" value="{{autor.id}}">{{autor.nome}}</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="submitted && hasError('autorId') && hasError('autorId')['required']">
+        Autor é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="genero">Gênero</label>
+      <select class="form-control" formControlName="generoId">
+        <option value="null">Selecione</option>
+        <option *ngFor="let genero of generos" value="{{genero.id}}">{{genero.nome}}</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="submitted && hasError('generoId') && hasError('generoId')['required']">
+        Gênero é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="capa">Capa</label>
+      <div class="custom-file">
+        <input #file type="file" class="custom-file-input" formControlName="capaPath" (change)="selectedFile($event)">
+        <label class="custom-file-label" for="customFile" id="customFileLabel"></label>
+        <div class="alert alert-danger" *ngIf="submitted && hasError('capaPath') && hasError('capaPath')['required']">
+          Capa é obrigatório.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="sinopse">Sinopse</label>
+      <textarea type="text" class="form-control" placeholder="Sinopse" formControlName="sinopse" rows="3"></textarea>
+      <div class="alert alert-danger" *ngIf="submitted && hasError('sinopse') && hasError('sinopse')['required']">
+        Sinopse é obrigatório.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
+    <button type="button" class="btn btn-secondary" routerLink="/livros">Voltar</button>
+  </div>
+</form>

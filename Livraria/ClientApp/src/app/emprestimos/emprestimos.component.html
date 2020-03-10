@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="card-header">
+    <div class="float-left">
+        <h3><b>Lista de Empréstimo Realizados</b></h3>
+    </div>
+    <div class="text-right">
+      <button type="button" class="btn btn-primary btn-sm" routerLink="create"><i class="glyphicon glyphicon-plus"></i> Realizar Empréstimo</button>
+      <button type="button" class="btn btn-secondary btn-sm" (click)="refresh()"><i class="glyphicon glyphicon-refresh"></i> Atualizar</button>
+    </div>
+  </div>
+  <hr />
+  <div class="card-body">
+    <table class="table table-hover" *ngIf="emprestimos$ | async as emprestimos; else loading">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Usuário</th>
+          <th>Livro</th>
+          <th>Devolução</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emprestimo of emprestimos">
+          <td>{{ emprestimo.id }}</td>
+          <td>{{ emprestimo.usuario }}</td>
+          <td>{{ emprestimo.livro }}</td>
+          <td *ngIf="!emprestimo.devolucao && emprestimo.diasRestantes >= 0"><span class="badge" style="background-color:orange;">Restam {{ emprestimo.diasRestantes }} dias</span></td>
+          <td *ngIf="!emprestimo.devolucao && emprestimo.diasRestantes < 0"><span class="badge" style="background-color:red;">Devolução atrasada {{ (emprestimo.diasRestantes * -1) }} dias</span></td>
+          <td *ngIf="emprestimo.devolucao"><span class="badge" style="background-color:green;">Devolvido</span></td>
+          <td class="text-right">
+            <button *ngIf="!emprestimo.devolucao" type="submit" class="btn btn-success" (click)="realizarDevolucao(emprestimo.id)">Realizar Devolução</button>
+            <button *ngIf="emprestimo.devolucao" class="btn btn-secondary" disabled>Realizar Devolução</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #loading>
+      <span>Carregando...</span>
+    </ng-template>
+  </div>
+</div>
+
+<ng-template #templateDelete>
+  <div class="modal-body text-center">
+    <p>Deseja confirmar?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+  </div>
+</ng-template>

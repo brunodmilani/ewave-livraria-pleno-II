@@ -1,0 +1,15 @@
+<form [formGroup]="form">
+  <h3><b>Alterar Gênero</b></h3>
+  <hr />
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" placeholder="Nome" formControlName="nome">
+      <div class="alert alert-danger" *ngIf="submitted && hasError('nome') && hasError('nome')['required']">
+        O campo nome é obrigatório.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="alterar()">Salvar</button>
+    <button type="button" class="btn btn-secondary" routerLink="/generos">Voltar</button>
+  </div>
+</form>

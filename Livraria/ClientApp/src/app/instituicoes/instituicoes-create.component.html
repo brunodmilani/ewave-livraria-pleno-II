@@ -1,0 +1,36 @@
+<form [formGroup]="form">
+  <h3><b>Cadatro de Instituições de Ensino</b></h3>
+  <hr />
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" formControlName="nome" placeholder="Nome">
+      <div class="alert alert-danger" *ngIf="submitted && hasError('nome') && hasError('nome')['required']">
+        O campo nome é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nome">Endereço</label>
+      <input type="text" class="form-control" formControlName="endereco" placeholder="Endereço">
+      <div class="alert alert-danger" *ngIf="submitted && hasError('endereco') && hasError('endereco')['required']">
+        O campo endereço é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nome">CNPJ</label>
+      <input type="text" class="form-control" formControlName="cnpj" placeholder="CNPJ" mask="00.000.000/0000-00">
+      <div class="alert alert-danger" *ngIf="submitted && hasError('cnpj') && hasError('cnpj')['required']">
+        O campo cnpj é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nome">Telefone</label>
+      <input type="text" class="form-control" formControlName="telefone" placeholder="Telefone" mask="(00) 00000-0000">
+      <div class="alert alert-danger" *ngIf="submitted && hasError('telefone') && hasError('telefone')['required']">
+        O campo telefone é obrigatório.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
+    <button type="button" class="btn btn-secondary" routerLink="/instituicoes">Voltar</button>
+  </div>
+</form>
