@@ -5,9 +5,11 @@
 ## Início
 
 * *Cadastro de Autores*
-* *Cadastro de Editoras*
 * *Cadastro de Gêneros*
+* *Cadastro de Instituições de ensino*
 * *Cadastro de Livros*
+* *Realizar Empréstimo de livros*
+* *Realizar Reserva de livros*
 
 ### Pré-requisito
 
