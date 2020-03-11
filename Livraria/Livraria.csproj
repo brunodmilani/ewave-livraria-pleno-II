@@ -55,6 +55,7 @@
 
   <ItemGroup>
     <Folder Include="Storage\Images\" />
+    <Folder Include="Storage\Images\" />
   </ItemGroup>
 
   <ItemGroup>
