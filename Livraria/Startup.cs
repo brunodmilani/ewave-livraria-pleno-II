@@ -84,8 +84,13 @@ namespace Livraria
 
             app.UseStaticFiles();
 
-            app.UseStaticFiles(new StaticFileOptions()
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "/Storage/Images"))
             {
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/Storage/Images");
+            }
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {                
                 FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Storage")),
                 RequestPath = new PathString("/Storage")
             });
