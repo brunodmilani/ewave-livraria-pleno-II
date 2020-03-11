@@ -8,6 +8,7 @@
 * *Cadastro de Gêneros*
 * *Cadastro de Instituições de ensino*
 * *Cadastro de Livros*
+* *Cadastro de Usuários*
 * *Realizar Empréstimo de livros*
 * *Realizar Reserva de livros*
 
